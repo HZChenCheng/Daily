@@ -81,17 +81,27 @@ extension ViewController: UICollectionViewDataSource {
         cell.newsModel = news[indexPath.item]
         return cell
     }
+    
 }
 
-extension ViewController: UICollectionViewDelegate {
-    
+extension ViewController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+
         let model = news[indexPath.item]
         let newsDetailVc = NewsDetailViewController()
         newsDetailVc.url = model.url
         navigationController?.pushViewController(newsDetailVc, animated: true)
     }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
 }
 
 
